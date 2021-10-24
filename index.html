@@ -5,8 +5,144 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <!--buat script javasvript seperti berikut untuk menggambar dalam canvas-->
+    <script>
+        //disni kita menggunakan fungsi window.onload yang manna fungsi onload akan ready ketika seluruh elemen selesai dimuat.
+        window.onload = function(){
+            // Langkah 1: Temukan Elemen Kanvas
+            // Ini dilakukan dengan menggunakan metode DOM HTML getElementById ():
+            var canvas = document.getElementById("myCanvas");
+            
+            //Buat Objek Gambar
+            // Diperlukan jenis objek gambar untuk kanvas.
+            // GetContext () adalah objek HTML bawaan, dengan properti dan metode untuk menggambar:
+            var context = canvas.getContext("2d");
+            
+            // Kemudian baru menggambar di atas kanvas.
+            // Menyiapkan proses menggambar segiempat.
+            context.beginPath();
+            
+            // Menggambar Segi empat dengan koordinat awal x=70px dan y=40px
+            // Dengan ukuran lebar=120px dan tinggi=120px
+            context.rect(70, 40, 120, 120);
+
+            // Menggunakan translasi dengan koordinat x=70 dan y=70.
+            context.translate(70, 70);
+
+            // Buat objek gambar ke warna abu-abu dengan style fill yaitu untuk mengisi warna pada object gambar.
+            context.fillStyle = "#3A4D57";
+            context.fill();
+
+            // Buat text di dalam canvas dengan method font() untuk setting ukurtanya 20px dan gaya huruf arial.
+            context.font = "20px Arial";
+            // Buat method fillText untuk menulis text di samping objek gambar Segiempat dalam canvas dengan koordinat x=130 dan y=30.
+            context.fillText(" > Segiempat", 130, 30);
+
+            //========================================================================================================================================
+            // Menyiapkan proses menggambar lingkaran.
+            context.beginPath();
+            
+            // Menggambar Lingkaran pusat koordinat x=320px dan y=100px
+            // arc() metode menciptakan busur / kurva dengan mulai angle untuk 0 dan sudut mengakhiri 2 * Math.PI.
+            context.arc(320, 100, 50, 0, 2 * Math.PI, false);
+            
+            // menggunakan translasi dengan koordinat x=70 dan y=70.
+            context.translate(70, 70);
+
+            // buat objek gambar ke warna biru keabuan dengan style fill yaitu untuk mengisi warna pada object gambar.
+            context.fillStyle = "#019494";
+            context.fill();
+            
+            // Buat method fillText untuk menulis text di samping objek gambar Lingkaran dalam canvas dengan koordinat x=320 dan y=40.
+            context.fillText(" > Lingkaran", 320, 40);
+
+            // menambahkan method rotasi dengan sudut = 10 derajat dikali pi dibagi 180.
+            //maka setelah gambar objek lingkaran akan dirotasikan ke sudut tersebut.
+            context.rotate(10 * Math.PI / 180);
+
+            //========================================================================================================================================
+            // Menyiapkan proses menggambar segitga.
+            context.beginPath();
+
+            //mendefinisikan titik awal ke koordinat x=450 dan y=140
+            context.moveTo(450, 140);
+
+            // buat titik selanjutnya koordinat x=500 dan y=40 yang berada di bagian atas untuk ditarik garis.
+            context.lineTo(500, 40);
+
+            // buat titik akhir koordinat x=550 dan y=140, kanan bawah untuk dibuat gambar membentuk segitiga.
+            context.lineTo(550, 140);
+
+            // kita akhiri dengan method closePath() yaitu untuk membuat jalur/ditarik garis ke titik awal koordinat yang maka akan membentuk segitiga.
+            context.closePath();
+
+            // beri warna ke objek gambar segitiga dengan warna merah.
+            context.fillStyle="#C93838";
+            context.fill();
+
+            // buat rotasi canvas ke sudut semula dengan derajatnya dikasih minus
+            context.rotate(-10 * Math.PI / 180);
+
+            // Buat method fillText untuk menulis text di samping objek gambar segitiga dalam canvas dengan koordinat x=530 dan y=180.
+            context.fillText(" > Segitiga (telah diberi rotasi) ", 530, 180);
+            
+            //buat kliping dengan koordinat x=100 y=80
+            // lebar 200 dan tinggi 200
+            context.rect(600,350, 500, 400);
+
+            //Menggambar jalur/garis kliping yang ddibuat
+            context.stroke();
+
+            //membuat kliping / menarush gambar selanjutnya ke kanvas yang telah dipotng. 
+            context.clip();
+
+            // Buat method fillText untuk menulis text di dalam kliping dengan koordinat x=800 dan y=380.
+            context.fillText(" -- Clipping --", 800, 380);
+
+            //========================================================================================================================================
+            //Gambar dalam Kliping
+            // Menyiapkan proses menggambar Segitiga siku-siku.
+            context.beginPath();
+
+            //mendefinisikan titik awal ke koordinat x=800 dan y=550, titik di kiri dalam canvas yang telah di clip.
+            context.moveTo(800, 550);
+
+            // buat titik selanjutnya koordinat x=900 dan y=400 yang berada di bagian atas untuk ditarik garis.
+            context.lineTo(900, 400);
+
+            // buat titik akhir koordinat x=900 dan y=550, dikanan bawah untuk dibuat gambar membentuk sudut 90.
+            context.lineTo(900, 550);
+
+            // kita akhiri dengan method closePath() yaitu untuk membuat jalur/ditarik garis ke titik awal koordinat yang maka akan membentuk segitiga.
+            context.closePath();
+
+            // beri warna ke objek gambar segitiga dengan warna merah.
+            context.fillStyle="#4F292E";
+            context.fill();
+
+            // Buat text dengan method fillText untuk menulis text di dalam kliping at x=530 dan y=180.
+            context.fillText("Segitiga siku-siku", 780, 580);
+        };
+    </script>
 </head>
 <body>
-    <p>Awal</p>
+    <!-- buat 2 tag html yaitu h3 dan p seperti berikut:--> 
+    <!-- buat tulisan dengan ukuran h3 -->
+    <h3 >Bentuk-Bentuk bangun datar</h3>
+
+    <!-- buat tulisan dengan tag p, definisi bangun datar -->
+    <p>Bangun datar merupakan sebutan untuk bangun-bangun yang memiliki dua dimensi.</p>
+    <p>NIM : 195410111</p>    
+
+    <!--elemen HTML5 disini kita gunakan canvas yang mana untuk menggambar dengan menggunakan titik koordinat-->
+    <!--Elemen canva dengan memanggil id "myCanvas" pada tag script javascript di tag header-->
+    <!--dengan lebar canvas 1300 dan tinggi canvas 1000 serta border ukuran 5px berwarna merah tua -->
+    <canvas id="myCanvas" width="1300" height="1000" 
+    style="border:5px solid #630505;">
+    <!--jika browser yang dipakai tidak support HTML5 maka akan menampilkan seperti dibawah-->
+    Browser tidak didukung.
+    </canvas>
+    
 </body>
 </html>
